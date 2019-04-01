@@ -14,6 +14,10 @@
 <link rel="stylesheet" type="text/css" href="{{url('plugins/OwlCarousel2-2.2.1/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('styles/responsive.css')}}">
+<style>
+
+
+</style>
 </head>
 <body>
 
@@ -34,7 +38,7 @@
                             <ul class="d-flex flex-row align-items-center justify-content-start">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/about">About us</a></li>
-                                <li><a href="">Contact</a></li>
+                                <li><a href="/contact">Contact</a></li>
                                 <li><a href="">Membership</a></li>
                                 <li><a href="">Current People Track</a></li>
                             </ul>
@@ -74,10 +78,8 @@
 							<div class="section_subtitle">Welcome to Ulysses Gym</div>
 							<div class="section_title"><font color="orange">About <span>Ulysses Gym</span></font></div>
 						</div>
-						<div class="text_highlight">Ulysses Gym Ulysses Gym Ulysses GymUlysses GymUlyssesUlysses GymUlysses GymUlysses GymUlysses GymUlysses GymUlysses GymUlysses Gym</div>
-						<div class="about_text">
-							<p>Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses Gym Ulysses GymUlysses GymUlysses GymUlysses Gym Ulysses Gym Ulysses Gym Ulysses GymUlysses GymUlysses </p>
-						</div>
+						<div class="text_highlight"><b><font color="orange">1748 Evangelista Street, Bangkal Makati</font></b></div>
+						<div class="text_highlight"><b><font color="orange">Ulysses Gym is a Fitness Center for Men & Women that's open 6am-10pm daily.</b></font></div>
 						<div class="button about_button"><a href="#">Join Now</a></div>
 					</div>
 				</div>
