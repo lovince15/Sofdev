@@ -14,10 +14,6 @@
 <link rel="stylesheet" type="text/css" href="{{url('plugins/OwlCarousel2-2.2.1/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('styles/responsive.css')}}">
-<style>
-
-
-</style>
 </head>
 <body>
 
@@ -39,7 +35,7 @@
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/about">About us</a></li>
                                 <li><a href="/contact">Contact</a></li>
-                                <li><a href="">Membership</a></li>
+                                <li><a href="/membership">Membership</a></li>
                                 <li><a href="">Current People Track</a></li>
                             </ul>
                         </nav>
@@ -80,7 +76,7 @@
 						</div>
 						<div class="text_highlight"><b><font color="orange">1748 Evangelista Street, Bangkal Makati</font></b></div>
 						<div class="text_highlight"><b><font color="orange">Ulysses Gym is a Fitness Center for Men & Women that's open 6am-10pm daily.</b></font></div>
-						<div class="button about_button"><a href="#">Join Now</a></div>
+						<div class="button about_button"><a href="/membership">Join Now</a></div>
 					</div>
 				</div>
 			</div>

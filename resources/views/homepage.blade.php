@@ -32,8 +32,8 @@
                             <ul class="d-flex flex-row align-items-center justify-content-start">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/about">About us</a></li>
-                                <li><a href="">Contact</a></li>
-                                <li><a href="">Membership</a></li>
+                                <li><a href="/contact">Contact</a></li>
+                                <li><a href="/membership">Membership</a></li>
                                 <li><a href="">Current People Track</a></li>
                             </ul>
                         </nav>
@@ -65,7 +65,7 @@
                                 </a>
                             </div>
                             <div class="home_title"><font color="Orange ">Get fit with us</font></div>
-                            <div class="button home_button ml-auto mr-auto"><a href="#"> Join Now</a></div>
+                            <div class="button home_button ml-auto mr-auto"><a href="/membership"> Join Now</a></div>
                         </div>
                     </div>
                 </div>
