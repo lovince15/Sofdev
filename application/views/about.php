@@ -76,7 +76,7 @@
 						</div>
 						<div class="text_highlight"><b><font color="orange">1748 Evangelista Street, Bangkal Makati</font></b></div>
 						<div class="text_highlight"><b><font color="orange">Ulysses Gym is a Fitness Center for Men & Women that's open 6am-10pm daily.</b></font></div>
-						<div class="button about_button"><a href="/membership">Join Now</a></div>
+						<div class="button about_button"><a href="<?php echo base_url('membership_controller');?>">Join Now</a></div>
 					</div>
 				</div>
 			</div>

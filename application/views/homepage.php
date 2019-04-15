@@ -66,7 +66,7 @@
                                 </a>
                             </div>
                             <div class="home_title"><font color="Orange ">Get fit with us</font></div>
-                            <div class="button home_button ml-auto mr-auto"><a href="/membership"> Join Now</a></div>
+                            <div class="button home_button ml-auto mr-auto"><a href="<?php echo base_url('membership_controller');?>"> Join Now</a></div>
                         </div>
                     </div>
                 </div>
