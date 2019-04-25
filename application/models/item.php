@@ -21,7 +21,7 @@ class Item extends CI_Model {
 	{
 		$query = $this->db->select('*')
 						   ->where('id',$id)
-						   ->get('locations');
+						   ->get('locations');	
 			return $query->row();
 	}
 
