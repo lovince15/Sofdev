@@ -77,47 +77,6 @@ class Item extends CI_Model {
 				return $query;
 	}
 
-	function insert_facility($data)
-	{
-		$query = $this->db->insert('facility',$data);
-				return $query;
-	}
 	
-	function list_facility()
-	{
-		$query = $this->db->select('facility.id as facility_id,facility_name,price,image,locations.id as locations_id,category.id as category_id,
-			description,facility.date_created as date_created,location_name,category_name')
-						->from('facility','locations','category')
-						->join('locations','facility.locations_id = locations.id','left')
-						->join('category','facility.category_id = category.id','left')
-						->get();
-				return $query->result();
-	}
-
-	function edit_facility($id)
-	{
-		$query = $this->db->select('facility.id as facility_id,facility_name,price,image,locations.id as locations_id,category.id as category_id,
-			description,facility.date_created as date_created,location_name,category_name')
-						->from('facility','locations','category')
-						->where('facility.id',$id)
-						->join('locations','facility.locations_id = locations.id','left')
-						->join('category','facility.category_id = category.id','left')
-						->get();
-				return $query->row();
-	}
-	function update_facility($data,$id)
-	{
-		$query = $this->db
-					  ->where('facility.$id',$id)
-					  ->update('facility',$data);
-					  return $query;
-	}
-	
-	function delete_facility($id)
-	{
-		$query = $this->db
-						->delete('facility',['id'=>$id]);
-				return $query;
-	}
 }
 	

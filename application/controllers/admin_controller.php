@@ -10,7 +10,7 @@ class Admin_controller extends CI_Controller {
 		if(!$out){
 			return redirect('login_controller');
 		}
-		$this->load->model('item');
+		$this->load->model(item');
 	}
 
 	function index()
