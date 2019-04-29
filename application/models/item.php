@@ -77,7 +77,7 @@ class Item extends CI_Model {
 				return $query;
 	}
 	
-		function insert_member($member_data)
+	function insert_member($member_data)
 	{
 		$query = $this->db
 						->insert('member',$member_data);
