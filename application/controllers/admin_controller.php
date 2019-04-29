@@ -188,6 +188,49 @@ else
 			return redirect('Admin_controller/listing_category');
 		}
 	}
+	
+	function adding_member()
+	{
+		$this->load->view('admin/members/add_members');
+	}
+
+	function inserting_member()
+	{
+		if ($this->form_validation->run('member_form') == FALSE)
+		{
+			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
+			$this->load->view('admin/members/add_members');
+		}
+		else
+		{
+			$category_name = $this->input->post('member_name');
+			$date = date('m/d/y');
+
+			$member_data = array('member_name'=>$category_name,'date_created'=>$date );
+			$member_result = $this->Item->insert_member($member_data);
+			if ($member_result) {
+				$this->session->set_flashdata('add_members','Member Successfully Entered');
+				return redirect('Admin_controller/adding_member');
+			}
+			else
+			{
+				$this->session->set_flashdata('add_members','Error Entering Member Please Try Again');
+				return redirect('Admin_controller/adding_member');
+			}
+		}
+	}
+	
+	function listing_member()
+	{
+		$category_result = $this->Item->list_member();
+		$this->load->view('admin/members/list_members',['member_data'=>$member_result]);
+	}
+	
+	function editing_member($id)
+	{
+		$member_result = $this->Item->edit_member($id);
+		$this->load->view('admin/members/edit_members',['member_result'=>$member_result]);
+	}
 
 	
 	function logout()
