@@ -231,6 +231,43 @@ else
 		$member_result = $this->Item->edit_member($id);
 		$this->load->view('admin/members/edit_members',['member_result'=>$member_result]);
 	}
+	
+	function updating_member()
+	{
+		$id = $this->input->post('id');
+		$member_result = $this->Item->edit_member($id);
+		
+
+		if ($this->form_validation->run('member_form') == FALSE) {
+			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
+			$this->load->view('admin/members/edit_members',['member_result'=>$member_result]);
+		}
+		else {
+			$id = $this->input->post('id');
+			$name = $this->input->post('member_name');
+			$date = date('m/d/y');
+
+			$member_result = $this->Item->update_member($id,$name,$date);
+			if ($member_result) {
+				$this->session->set_flashdata('flash_member','Member Updated Successfully');
+				return redirect('Admin_controller/listing_member');
+			}
+			else{
+				$this->session->set_flashdata('flash_member','Error Updating Member. Please Try Again');
+				return redirect('Admin_controller/listing_member');
+			}
+
+		}
+	}
+
+	function deleting_member($id)
+	{
+		$member_result = $this->Item->delete_member($id);
+		if ($member_result) {
+			$this->session->set_flashdata('flash_member','Member Deleted Successfully');
+			return redirect('Admin_controller/listing_member');
+		}
+	}
 
 	
 	function logout()
