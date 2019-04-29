@@ -272,6 +272,17 @@
                                 </li>
                             </ul>
                         </li>
+			<li>
+                            <a href="#"><i class="fa fa-smile-o fa-fw"></i> Member <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url('admin_controller/adding_member')  ?>">Add New Member</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('admin_controller/listing_member');?>">List of Members</a>
+                                </li>
+                            </ul>
+                        </li>  
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
