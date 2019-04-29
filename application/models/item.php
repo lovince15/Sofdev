@@ -76,6 +76,36 @@ class Item extends CI_Model {
 						->delete('category',['id'=>$id]);
 				return $query;
 	}
+	
+		function insert_member($member_data)
+	{
+		$query = $this->db
+						->insert('member',$member_data);
+				return $query;
+	}
+	
+	function list_member()
+	{
+		$query $this->db->select('*')
+					  ->get('member');
+					return $query->result();
+	}
+	
+	function edit_member($id)
+	{
+		$query = $this->db->select()
+							->where('id',$id)
+							->get('member');
+				return $query->row();
+	}
+	
+	function update_member($id, $name, $date)
+	{
+		$query = $this->db
+						->where('id',$id)
+						->update('member',['member_name'=>$name,'date_created'=>$date]);
+				return $query;
+	}
 
 	
 }
