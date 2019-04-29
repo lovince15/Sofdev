@@ -106,6 +106,13 @@ class Item extends CI_Model {
 						->update('member',['member_name'=>$name,'date_created'=>$date]);
 				return $query;
 	}
+	
+	function delete_member($id)
+	{
+		$query = $this->db
+						->delete('member',['id'=>$id]);
+				return $query;
+	}
 
 	
 }
