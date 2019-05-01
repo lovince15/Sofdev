@@ -270,7 +270,7 @@ else
 	}
 
 	
-	func logout()
+	function logout()
 	{
 		$this->session->unset_userdata('security');
 		return redirect('login_controller');
