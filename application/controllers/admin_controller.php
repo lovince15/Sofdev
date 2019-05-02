@@ -260,7 +260,7 @@ else
 		}
 	}
 
-	function delete_member($id)
+	function deleting_member($id)
 	{
 		$member_result = $this->Item->delete_member($id);
 		if ($member_result) {
