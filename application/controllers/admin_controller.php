@@ -196,7 +196,7 @@ else
 
 	function inserting_member()
 	{
-		if ($this->form_validation->run('member_form') == FALSE)
+		if ($this->form_validation->run('member_form') == TRUE)
 		{
 			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
 			$this->load->view('admin/members/add_members');
@@ -238,7 +238,7 @@ else
 		$member_result = $this->Item->edit_member($id);
 		
 
-		if ($this->form_validation->run('member_form') == FALSE) {
+		if ($this->form_validation->run('member_form') == TRUE) {
 			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
 			$this->load->view('admin/members/edit_members',['member_result'=>$member_result]);
 		}
