@@ -268,6 +268,79 @@ else
 			return redirect('Admin_controller/listing_member');
 		}
 	}
+	
+	
+	function adding_facility()
+	{
+		$this->load->view('admin/facilities/add_facilities');
+	}
+	function inserting_facility()
+	{
+		if ($this->form_validation->run('facility_form') == TRUE)
+		{
+			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
+			$this->load->view('admin/facilities/add_facilities');
+		}
+		else
+		{
+			$facility_name = $this->input->post('facility_name');
+			$date = date('m/d/y');
+			$facility_data = array('facility_name'=>$facility_name,'date_created'=>$date );
+			$facility_result = $this->Item->insert_facility($facility_data);
+			if ($facility_result) {
+				$this->session->set_flashdata('add_facility','Facility Successfully Entered');
+				return redirect('Admin_controller/adding_facility');
+			}
+			else
+			{
+				$this->session->set_flashdata('add_facility','Error Entering Facility. Please Try Again');
+				return redirect('Admin_controller/adding_facility');
+			}
+		}
+	}
+	function listing_facility()
+	{
+		$facility_result = $this->Item->list_facility();
+		$this->load->view('admin/facilities/list_facilities',['facility_data'=>$facility_result]);
+	}
+	function editing_facility($id)
+	{
+		$facility_result = $this->Item->edit_facility($id);
+		$this->load->view('admin/facilities/edit_facilities',['facility_result'=>$facility_result]);
+	}
+	
+	function updating_facility()
+	{
+		$id = $this->input->post('id');
+		$facility_result = $this->Item->edit_facility($id);
+		
+		if ($this->form_validation->run('facility_form') == TRUE) {
+			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
+			$this->load->view('admin/facilities/edit_categories',['facility_result'=>$facility_result]);
+		}
+		else {
+			$id = $this->input->post('id');
+			$name = $this->input->post('facility_name');
+			$date = date('m/d/y');
+			$facility_result = $this->Item->update_facility($id,$name,$date);
+			if ($facility_result) {
+				$this->session->set_flashdata('flash_facility','Facility Updated Successfully');
+				return redirect('Admin_controller/listing_facility');
+			}
+			else{
+				$this->session->set_flashdata('flash_category','Error Updating Category. Please Try Again');
+				return redirect('Admin_controller/listing_facility');
+			}
+		}
+	}
+	function deleting_facility($id)
+	{
+		$facility_result = $this->Item->delete_facility($id);
+		if ($facility_result) {
+			$this->session->set_flashdata('flash_facility','Facility Deleted Succcessfully');
+			return redirect('Admin_controller/listing_facility');
+		}
+	}
 
 	
 	function logout()
