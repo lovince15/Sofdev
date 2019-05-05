@@ -113,6 +113,43 @@ class Item extends CI_Model {
 						->delete('member',['id'=>$id]);
 				return $query;
 	}
+	
+	function insert_facility($facility_data)
+	{
+		$query = $this->db
+						->insert('facility',$facility_data);
+				return $query;
+	}
+
+	function list_facility()
+	{
+		$query = $this->db->select('*')
+						->get('facility');
+				return $query->result();
+	}
+
+	function edit_facility($id)
+	{
+		$query = $this->db->select()
+							->where('id',$id)
+							->get('facility');
+				return $query->row();
+	}
+
+	function update_facility($id,$name,$date)
+	{
+		$query = $this->db
+						->where('id',$id)
+						->update('facility',['facility_name'=>$name,'date_created'=>$date]);
+				return $query;
+	}
+
+	function delete_facility($id)
+	{
+		$query = $this->db
+						->delete('facility',['id'=>$id]);
+				return $query;
+	}
 
 	
 }
