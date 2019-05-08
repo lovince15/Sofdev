@@ -261,6 +261,30 @@
                                 </li>
                             </ul>
                         </li>
+						
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-smile-o fa-fw"></i> Trainer<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url('admin_controller/adding_trainer')  ?>">Add New Trainer</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('admin_controller/listing_trainer');?>">List of Trainers</a>
+                                </li>
+                            </ul>
+                        </li>
+						<li>
+                            <a href="#"><i class="fa fa-smile-o fa-fw"></i> Equipment<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo base_url('admin_controller/adding_equipment')  ?>">Add New Equipment</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url('admin_controller/listing_equipment');?>">List of Equipment</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-smile-o fa-fw"></i> Facility<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

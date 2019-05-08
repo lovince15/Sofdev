@@ -1,5 +1,6 @@
 <?php
 $config = array(
+		
         'location_form' => array(
                 array(
                         'field' => 'location_name',
@@ -52,9 +53,24 @@ $config = array(
                         'label' => 'Description',
                         'rules' => 'required'
                 )
-        )
-        
-);
+        ),
+		'equipment_form' =>array(
+			array(
+					'field' =>'equipment_name',
+					'label' =>'Equipment Name',
+					'rules' => 'required'
+				),
+				  
+
+  'trainer_form' =>array(
+			array(
+					'field' =>'trainer_name',
+					'label' =>'Trainer Name',
+					'rules' => 'required'
+				),
+				
+  )      
+));
 
 
 

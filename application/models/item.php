@@ -86,7 +86,7 @@ class Item extends CI_Model {
 	
 	function list_member()
 	{
-		$query $this->db->select('*')
+		$query = $this->db->select('*')
 					  ->get('member');
 					return $query->result();
 	}
@@ -150,7 +150,70 @@ class Item extends CI_Model {
 						->delete('facility',['id'=>$id]);
 				return $query;
 	}
+	function list_equipment()
+	{
+		$query = $this->db->select('*')
+							  ->get('equipment');
+					return $query->result(); 
+	}
+	function edit_equipment($id)
+	{
+		$query = $this->db->select('*')
+						   ->where('id',$id)
+						   ->get('equipment');	
+			return $query->row();
+	}
+	function update_equipment($id,$name,$date)
+	{
+		$query = $this->db
+							 ->where('id',$id) 
+							 ->update('equipment',['equipment_name'=>$name,'date_created'=>$date]);
+					return $query;						
+	}
+	function delete_equipment($id)
+	{
+		$query = $this->db
+						->delete('equipment',['id'=>$id]);
+				return $query;
+	}
+	function insert_equipment($equipment_data)
+	{
+		$query = $this->db
+						->insert('equipment',$equipment_data);
+				return $query;
+	}
 
-	
-}
-	
+	function list_trainer()
+	{
+		$query = $this->db->select('*')
+							  ->get('trainer');
+					return $query->result(); 
+	}
+	function edit_trainer($id)
+	{
+		$query = $this->db->select('*')
+						   ->where('id',$id)
+						   ->get('trainer');	
+			return $query->row();
+
+	function update_trainer($id,$name,$date)
+	{
+		$query = $this->db
+
+							 ->where('id',$id) 
+							 ->update('trainer',['trainer_name'=>$name,'date_created'=>$date]);
+					return $query;						
+	}
+	function delete_trainer($id)
+	{
+		$query = $this->db
+						->delete('trainer',['id'=>$id]);
+				return $query;
+	}
+	function insert_equipment($equipment_data)
+	{
+		$query = $this->db
+				->insert('equipment',$equipment_data);
+				return $query;
+	}
+}}
