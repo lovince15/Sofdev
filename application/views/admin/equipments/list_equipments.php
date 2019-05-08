@@ -6,15 +6,15 @@
 		<div class="col-md-6 col-md-offset-0">
 			<div class="table-responsive">
 				<table id="Table" class="table table-bordered table-striped">
-					<form><?php if($equipment_list = $this->session->flashdata('equipment_flash')) {?>
+					<form><?php if($flash_equipment = $this->session->flashdata('flash_equipment')) {?>
 					<div class="alert alert-success" >
-						<?php echo $equipment_list;?>
+						<?php echo $flash_equipment;?>
 					</div>	
 				<?php }?></form>
 					<h2>List of Equipment</h2>
 					<thead>
 						<tr>
-							<th>Equipment Number</th>
+							<th>Serial Number</th>
 							<th>Equipment Name</th>
 							<th>Date Created</th>
 							<th>Action</th>

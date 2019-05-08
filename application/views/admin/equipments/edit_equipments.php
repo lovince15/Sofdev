@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class= "col-md-4 col-md-offset-0">
 			<form action="<?php echo base_url('admin_controller/updating_equipment')?>" method="POST">
-				<h3>Update Equipmenth</h3>
+				<h3>Update Equipment</h3>
 				<hr>
 				<input type="hidden" name="id" value="<?php echo $equipment_result->id ?>">
 				<label>Equipment Name</label>

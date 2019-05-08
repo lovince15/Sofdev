@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class= "col-md-4 col-md-offset-0">
 			<form action="<?php echo base_url('admin_controller/inserting_equipment')?>" method="POST">
-				<h3>Add New Equipment</h3>
+				<h3>Add New Equipments</h3>
 				<hr>
 				<label>Equipment Name</label>
 				<input type="text" class="form-control" name="equipment_name" placeholder="Equipment Name" >
@@ -20,3 +20,4 @@
 			</form>
 		</div>
 	</div>
+
