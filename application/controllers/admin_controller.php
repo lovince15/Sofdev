@@ -203,10 +203,13 @@ else
 		}
 		else
 		{
-			$category_name = $this->input->post('member_name');
+			$member_name = $this->input->post('member_name');
 			$date = date('m/d/y');
+			$member_gender= $this->input->post('member_gender');
+			$member_email= $this->input->post('member_email');
+			$member_contact= $this->input->post('member_contact');
 
-			$member_data = array('member_name'=>$category_name,'date_created'=>$date );
+			$member_data = array('member_name'=>$member_name,'date_created'=>$date,'member_gender'=>$member_gender,'member_email'=>$member_email,'member_contact'=>$member_contact );
 			$member_result = $this->Item->insert_member($member_data);
 			if ($member_result) {
 				$this->session->set_flashdata('add_members','Member Successfully Entered');
@@ -222,20 +225,20 @@ else
 	
 	function listing_member()
 	{
-		$category_result = $this->Item->list_member();
+		$member_result = $this->Item->list_members();
 		$this->load->view('admin/members/list_members',['member_data'=>$member_result]);
 	}
 	
 	function editing_member($id)
 	{
-		$member_result = $this->Item->edit_member($id);
+		$member_result = $this->Item->edit_members($id);
 		$this->load->view('admin/members/edit_members',['member_result'=>$member_result]);
 	}
 	
 	function updating_member()
 	{
 		$id = $this->input->post('id');
-		$member_result = $this->Item->edit_member($id);
+		$member_result = $this->Item->edit_members($id);
 		
 
 		if ($this->form_validation->run('member_form') == TRUE) {
@@ -245,9 +248,12 @@ else
 		else {
 			$id = $this->input->post('id');
 			$name = $this->input->post('member_name');
+			$gender = $this->input->post('member_gender');
+			$email = $this->input->post('member_email');
+			$contact = $this->input->post('member_contact');
 			$date = date('m/d/y');
 
-			$member_result = $this->Item->update_member($id,$name,$date);
+			$member_result = $this->Item->update_member($id,$name,$gender,$email,$contact,$date);
 			if ($member_result) {
 				$this->session->set_flashdata('flash_member','Member Updated Successfully');
 				return redirect('Admin_controller/listing_member');
@@ -341,192 +347,147 @@ else
 			return redirect('Admin_controller/listing_facility');
 		}
 	}
-
 	function adding_equipment()
 	{
-		$this->load->view('admin/equipment/add_equipment');
+		$this->load->view('admin/equipments/add_equipments');
 	}
-
 	function inserting_equipment()
 	{
-		if($this->form_validation->run('equipment_form') == FALSE)
+		if ($this->form_validation->run('equipment_form') == FALSE)
 		{
 			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
-			$this->load->view('admin/equipment/add_equipment');
+			$this->load->view('admin/equipments/add_equipments');
 		}
 		else
 		{
-		 $equipmentname = $this->input->post('equipment_name');
-		 $date = date('m/d/y');
-
-         $equipment_data = array('equipment_name' => $equipmentname , 'date_created' => $date );
-
-	     $equipment_result = $this->Item->insert_equipment($equipment_data);
-		 if ($equipment_result)
-		 {
-		 	  $this->session->set_flashdata('add_equipment','Data Successfully Entered');
-			  return redirect('Admin_controller/adding_equipment'); 	
-		 }
-		 else
-		 {
-		  $this->session->set_flashdata('add_equipment','Error Occured Please Try Again');
-		  return redirect('Admin_controller/adding_equipment');
-		 }
+			$equipment_name = $this->input->post('equipment_name');
+			$date = date('m/d/y');
+			$equipment_data = array('equipment_name'=>$equipment_name,'date_created'=>$date );
+			$equipment_result = $this->Item->insert_equipment($equipment_data);
+			if ($equipment_result) {
+				$this->session->set_flashdata('add_equipment','Equipment Successfully Entered');
+				return redirect('Admin_controller/adding_equipment');
+			}
+			else
+			{
+				$this->session->set_flashdata('add_equipment','Error Entering Equipment. Please Try Again');
+				return redirect('Admin_controller/adding_equipment');
+			}
 		}
 	}
-
 	function listing_equipment()
 	{
 		$equipment_result = $this->Item->list_equipment();
-		if ($equipment_result) {
-			$this->load->view('admin/equipment/listing_equipment',['equipment_data'=>$equipment_result]);
-		}
-		else{
-		$this->load->view('admin/equipment/listing_equipment',['equipment_data'=>$equipment_result]);
-		}
+		$this->load->view('admin/equipments/list_equipments',['equipment_data'=>$equipment_result]);
 	}
-
 	function editing_equipment($id)
 	{
 		$equipment_result = $this->Item->edit_equipment($id);
-		$this->load->view('admin/equipment/edit_equipment',['equipment_result'=>$equipment_result]);
+		$this->load->view('admin/equipments/edit_equipments',['equipment_result'=>$equipment_result]);
 	}
-	
 	function updating_equipment()
 	{
 		$id = $this->input->post('id');
 		$equipment_result = $this->Item->edit_equipment($id);
-		if ($this->form_validation->run('equipment_form') == FALSE)
-		{		
+		
+		if ($this->form_validation->run('equipment_form') == FALSE) {
 			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
-			$this->load->view('admin/equipment/edit_equipment',['equipment_result'=>$equipment_result]);
+			$this->load->view('admin/equipments/edit_equipments',['equipment_result'=>$equipment_result]);
 		}
-
-		else
-		{
+		else {
 			$id = $this->input->post('id');
 			$name = $this->input->post('equipment_name');
 			$date = date('m/d/y');
-
-			$equipment_result = $this->Item->update_equipment($name,$id,$date);
-
-		if ($equipment_result) 
-		{
-			$this->session->set_flashdata('equipment_flash','Record Update Successfully');
-		    return redirect('Admin_controller/listing_equipment');
-		}
-		else
-		{
-			$this->session->set_flashdata('equipment_flash','Error Occured Please Try Again');
-			return redirect('Admin_controller/listing_equipment');
-		}
-}
-	}
-
-		function deleting_equipment($id)
-		{
-			$equipment_result = $this->Item->delete_equipment($id);
-			if ($equipment_result) 
-			{
-			$this->session->set_flashdata('flash_equipment','Category Deleted Succcessfully');
-			return redirect('Admin_controller/listing_equipment');
+			$equipment_result = $this->Item->update_equipment($id,$name,$date);
+			if ($equipment_result) {
+				$this->session->set_flashdata('flash_equipment','Equipment Updated Successfully');
+				return redirect('Admin_controller/listing_equipment');
+			}
+			else{
+				$this->session->set_flashdata('flash_equipment','Error Equipment. Please Try Again');
+				return redirect('Admin_controller/listing_equipment');
 			}
 		}
-		
+	}	
+	function deleting_equipment($id)
+	{
+		$equipment_result = $this->Item->delete_equipment($id);
+		if ($equipment_result) {
+			$this->session->set_flashdata('flash_equipment','Equipment Deleted Succcessfully');
+			return redirect('Admin_controller/listing_equipment');
+		}
+	}
 		function adding_trainer()
-		{
-			$this->load->view('admin/trainer/add_trainer');
-		}	
+	{
+		$this->load->view('admin/trainers/add_trainers');
+	}
 		function inserting_trainer()
-		{
-			if($this->form_validation->run('trainer_form') == FALSE)
+	{
+		if ($this->form_validation->run('trainer_form') == TRUE)
 		{
 			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
-			$this->load->view('admin/trainer/add_trainer');
+			$this->load->view('admin/trainers/add_trainers');
 		}
 		else
 		{
-		 $trainername = $this->input->post('trainer_name');
-		 $date = date('m/d/y');
-
-         $trainer_data = array('trainer_name' => $trainername , 'date_added' => $date );
-
-	     $trainer_result = $this->Item->insert_trainer($trainer_data);
-		 if ($trainer_result)
-		 {
-		 	  $this->session->set_flashdata('add_trainer','Data Successfully Entered');
-			  return redirect('Admin_controller/adding_trainer'); 	
-		 }
-		 else
-		 {
-		  $this->session->set_flashdata('add_trainer','Error Occured Please Try Again');
-		  return redirect('Admin_controller/adding_trainer');
-		 }
+			$trainer_name = $this->input->post('trainer_name');
+			$date = date('m/d/y');
+			$trainer_data = array('trainer_name'=>$trainer_name,'date_created'=>$date );
+			$trainer_result = $this->Item->insert_trainer($trainer_data);
+			if ($trainer_result) {
+				$this->session->set_flashdata('add_trainer','Trainer Successfully Entered');
+				return redirect('Admin_controller/adding_trainer');
+			}
+			else
+			{
+				$this->session->set_flashdata('add_trainer','Error Entering Trainer. Please Try Again');
+				return redirect('Admin_controller/adding_trainer');
+			}
 		}
 	}
-		function listing_trainer()
-		{
-			$trainer_result = $this->Item->list_trainer();
-			if ($trainer_result) {
-			$this->load->view('admin/trainer/list_trainer',['trainer_data'=>$trainer_result]);
-		}
-		else
-		{
-			$this->load->view('admin/trainer/list_trainer',['trainer_data'=>$trainer_result]);
-		}
-		}
-
-
-			function editing_trainer($id)
+	function listing_trainer()
+	{
+		$trainer_result = $this->Item->list_trainer();
+		$this->load->view('admin/trainers/list_trainers',['trainer_data'=>$trainer_result]);
+	}
+	function editing_trainer($id)
 	{
 		$trainer_result = $this->Item->edit_trainer($id);
-		$this->load->view('admin/trainer/edit_trainer',['trainer_result'=>$trainer_result]);
+		$this->load->view('admin/trainers/edit_trainers',['trainer_result'=>$trainer_result]);
 	}
-	
-
-	function updating_etrainer()
+	function updating_trainer()
 	{
 		$id = $this->input->post('id');
 		$trainer_result = $this->Item->edit_trainer($id);
-		if ($this->trainer_validation->run('trainer_form') == FALSE)
-		{		
+		
+		if ($this->form_validation->run('trainer_form') == TRUE) {
 			$this->form_validation->set_error_delimiters('<div class="error" style="color:red">','</div>');
-			$this->load->view('admin/trainer/edit_trainer',['trainer_result'=>$trainer_result]);
+			$this->load->view('admin/trainers/edit_trainers',['trainer_result'=>$trainer_result]);
 		}
-
-		else
-		{
+		else {
 			$id = $this->input->post('id');
 			$name = $this->input->post('trainer_name');
 			$date = date('m/d/y');
-
-			$trainer_result = $this->Item->update_trainer($name,$id,$date);
-
-		if ($trainer_result) 
-		{
-			$this->session->set_flashdata('trainer_flash','Record Update Successfully');
-		    return redirect('Admin_controller/listing_trainer');
-		}
-		else
-		{
-			$this->session->set_flashdata('trainer_flash','Error Occured Please Try Again');
-			return redirect('Admin_controller/listing_trainer');
-		}
-}
-	}
-		function deleting_trainer($id)
-		{
-			$trainer_result = $this->Item->delete_trainer($id);
-			if ($trainer_result) 
-			{
-			$this->session->set_flashdata('flash_trainer','Category Deleted Succcessfully');
-			return redirect('Admin_controller/listing_trainer');
+			$trainer_result = $this->Item->update_trainer($id,$name,$date);
+			if ($trainer_result) {
+				$this->session->set_flashdata('flash_trainer','Trainer Updated Successfully');
+				return redirect('Admin_controller/listing_trainer');
+			}
+			else{
+				$this->session->set_flashdata('flash_trainer','Error Updating Trainer. Please Try Again');
+				return redirect('Admin_controller/listing_trainer');
 			}
 		}
+	}
+	function deleting_trainer($id)
+	{
+		$trainer_result = $this->Item->delete_trainer($id);
+		if ($trainer_result) {
+			$this->session->set_flashdata('flash_trainer','Trainer Deleted Succcessfully');
+			return redirect('Admin_controller/listing_trainer');
+		}
+	}
 
-
-
-	
 	function logout()
 	{
 		$this->session->unset_userdata('security');

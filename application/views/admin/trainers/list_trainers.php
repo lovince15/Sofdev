@@ -26,7 +26,7 @@
 						<tr>
 							<td><?php echo $i++ ?></td>
 							<td><?php echo $trainer_result->trainer_name?></td>
-							<td><?php echo $trainer_result->date_added?></td>
+							<td><?php echo $trainer_result->date_created?></td>
 							<td><?php echo anchor('admin_controller/editing_trainer/'.$trainer_result->id,'Edit',['class'=>'btn btn-success']);?> | 
 								<?php echo anchor('admin_controller/deleting_trainer/'.$trainer_result->id,'Delete',['class'=>'btn btn-danger	']);?></td>
 
